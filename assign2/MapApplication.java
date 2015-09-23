@@ -1,4 +1,4 @@
-//import java.awt.*;
+import java.awt.*;
 import javax.swing.*;
 import java.lang.reflect.*;
 
@@ -28,23 +28,40 @@ public class MapApplication {
         JFrame frame2 = new JFrame("Map #2");
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	// Set up map:
+        // Set up map:
         MapGrid map;
-	// FILL IN HERE 
+        // FILL IN HERE
         // (Call the constructor for the new MapGrid and fill it with stuff)
-        map = new MapGrid(10,15);
-        
+        map = new MapGrid(50,50);
+        map.modifyRectangleWithColor(new Rectangle(18,20,24,10), Color.BLACK);
+        map.modifyRectangleWithColor(new Rectangle(21,20,5,1), Color.CYAN);
+        map.modifyRectangleWithColor(new Rectangle(23,31,14,6), Color.BLUE);
+        map.modifyRectangleWithColor(new Rectangle(20,30,19,2), Color.YELLOW);
+        map.modifyRectangleWithColor(new Rectangle(20,32,3,5), Color.YELLOW);
+        map.modifyRectangleWithColor(new Rectangle(37,30,3,7), Color.YELLOW);
+        map.modifyRectangleWithColor(new Rectangle(20,37,20,2), Color.YELLOW);
+        map.modifyRectangleWithColor(new Rectangle(4,5,46,6), Color.GRAY);
+        map.modifyRectangleWithColor(new Rectangle(28,0,11,20), Color.GRAY);
+        map.modifyRectangleWithColor(new Rectangle(7,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(14,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(21,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(28,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(35,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(42,6,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(49,6,1,1), Color.WHITE);
+
+
         // Create and add the viewers:
         MapViewer view1, view2;
-	// FILL IN HERE 
+        // FILL IN HERE
         // (Call the constructors for the two new MapViewer objects,
         //  making sure they have different viewpoints of the map you just
         //  set up above.)
-        view1 = new MapViewer ();
-        view2 = new MapViewer ();
-        
-	frame1.getContentPane().add(view1);
-	frame2.getContentPane().add(view2);
+        view1 = new MapViewer(map, 1, 0, 0);
+        view2 = new MapViewer(map, 6, 4, 5);
+
+        frame1.getContentPane().add(view1);
+        frame2.getContentPane().add(view2);
 
         // Display the windows:
         frame1.pack();
@@ -56,16 +73,16 @@ public class MapApplication {
     public static void main(String[] args) throws Throwable {
         // set up windows with viewers:
         try {
-	    javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
-		    public void run() {
-			setupWindows();
-		    }
-		});
-	} catch (InterruptedException e) {
-	    System.out.println("Couldn't create GUI.");
-	    System.exit(-1);
-	} catch (InvocationTargetException e) {
-	    throw(e.getTargetException());
-	}
+            javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
+                public void run() {
+                    setupWindows();
+                }
+            });
+        } catch (InterruptedException e) {
+            System.out.println("Couldn't create GUI.");
+            System.exit(-1);
+        } catch (InvocationTargetException e) {
+            throw(e.getTargetException());
+        }
     }
 }
