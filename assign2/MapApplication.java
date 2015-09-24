@@ -40,15 +40,16 @@ public class MapApplication {
         map.modifyRectangleWithColor(new Rectangle(20,32,3,5), Color.YELLOW);
         map.modifyRectangleWithColor(new Rectangle(37,30,3,7), Color.YELLOW);
         map.modifyRectangleWithColor(new Rectangle(20,37,20,2), Color.YELLOW);
-        map.modifyRectangleWithColor(new Rectangle(4,5,46,6), Color.GRAY);
+        map.modifyRectangleWithColor(new Rectangle(0,5,50,7), Color.GRAY);
         map.modifyRectangleWithColor(new Rectangle(28,0,11,20), Color.GRAY);
-        map.modifyRectangleWithColor(new Rectangle(7,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(14,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(21,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(28,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(35,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(42,6,3,1), Color.WHITE);
-        map.modifyRectangleWithColor(new Rectangle(49,6,1,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle( 0,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle( 7,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(14,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(21,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(28,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(35,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(42,8,3,1), Color.WHITE);
+        map.modifyRectangleWithColor(new Rectangle(49,8,1,1), Color.WHITE);
 
 
         // Create and add the viewers:
@@ -57,8 +58,9 @@ public class MapApplication {
         // (Call the constructors for the two new MapViewer objects,
         //  making sure they have different viewpoints of the map you just
         //  set up above.)
-        view1 = new MapViewer(map, 1, 0, 0);
-        view2 = new MapViewer(map, 6, 4, 5);
+
+        view1 = new MapViewer(map, 6, 0, 0);
+        view2 = new MapViewer(map, 8, 5, 10);
 
         frame1.getContentPane().add(view1);
         frame2.getContentPane().add(view2);
