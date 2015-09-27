@@ -1,12 +1,13 @@
 import java.awt.*;
 
 /**
- * A Java program that creates a map grid.
+ * A Java program that creates a grid for a map.
  * @author Amy Gohlke
- * @version CSC212 HW2
+ * @version September 23, 2015
  */
 
 class MapGrid {
+    // create a 2d array fill it in with the color green
     Color[][] arr2d;
 
     MapGrid (int w, int h)
@@ -22,26 +23,31 @@ class MapGrid {
     }
 
     int getWidth()
+    // return width of the 2d array
     {
         return arr2d.length;
     }
 
     int getHeight()
+    // return height of the 2d array
     {
         return arr2d[0].length;
     }
 
     Color getSquare(int x, int y)
+    // return the coordinates of a specified square in the map
     {
         return arr2d[x][y];
     }
 
     void setSquare(int x, int y, Color c)
+    // set a specific square a specific color
     {
         arr2d[x][y] = c;
     }
 
     void modifyRectangleWithColor(Rectangle r, Color c)
+    // color the rectangles of the map
     {
         for (int x=r.x; x< r.x + r.width; x++)
         {

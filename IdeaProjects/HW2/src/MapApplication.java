@@ -4,7 +4,7 @@ import java.lang.reflect.*;
 
 /**
  *  This file provides the skeleton of a Java Swing application
- *  for assignment 2 of CSC 112.  It is intended to create two windows
+ *  for assignment 2 of CSC 212.  It is intended to create two windows
  *  with differing views of a map.  Portions are left unfinished for
  *  students to fill in.
  *
@@ -28,10 +28,8 @@ public class MapApplication {
         JFrame frame2 = new JFrame("Map #2");
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Set up map:
         MapGrid map;
-        // FILL IN HERE
-        // (Call the constructor for the new MapGrid and fill it with stuff)
+        // create all of the rectangles to display a map-like image
         map = new MapGrid(50,50);
         map.modifyRectangleWithColor(new Rectangle(18,20,24,10), Color.BLACK);
         map.modifyRectangleWithColor(new Rectangle(21,20,5,1), Color.CYAN);
@@ -52,14 +50,11 @@ public class MapApplication {
         map.modifyRectangleWithColor(new Rectangle(49,8,1,1), Color.WHITE);
 
 
-        // Create and add the viewers:
         MapViewer view1, view2;
-        // FILL IN HERE
-        // (Call the constructors for the two new MapViewer objects,
-        //  making sure they have different viewpoints of the map you just
-        //  set up above.)
+        // view1 shows the whole map
+        // view2 shows part of the map magnified
 
-        view1 = new MapViewer(map, 6, 0, 0);
+        view1 = new MapViewer(map, 6, 0,  0);
         view2 = new MapViewer(map, 8, 5, 10);
 
         frame1.getContentPane().add(view1);

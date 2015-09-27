@@ -1,7 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A Java program that creates a viewer of the map.
+ * @author Amy Gohlke
+ * @version September 23, 2015
+ */
+
 public class MapViewer extends JComponent
+    // create the map viewer
 {
     private MapGrid mapGrid;
 
@@ -11,15 +18,9 @@ public class MapViewer extends JComponent
 
     public static final int CANVAS_SIZE = 350;
 
-    public MapViewer(MapGrid grid)
-    {
-        super();
-        mapGrid = grid;
-        magnification = 10;
-        offSet = new Point(0, 0);
-    }
 
     public MapViewer(MapGrid grid, int mag, int offx, int offy)
+    // allow the map viewer to take into account the magnification and offset points to produce a view
     {
         super();
         mapGrid = grid;
@@ -48,6 +49,7 @@ public class MapViewer extends JComponent
     }
 
     public void paintComponent(Graphics g)
+    // creates the magnified view of a section of the map
     {
         for (int x = offSet.x; x < mapGrid.getWidth(); x++)
         {
