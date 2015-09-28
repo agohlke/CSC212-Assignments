@@ -8,7 +8,7 @@ import java.awt.*;
  */
 
 public class MapViewer extends JComponent
-    // create the map viewer
+        // create the map viewer
 {
     private MapGrid mapGrid;
 
@@ -16,16 +16,20 @@ public class MapViewer extends JComponent
 
     private Point offSet;
 
-    public static final int CANVAS_SIZE = 350;
+    public static final int CANVAS_SIZE = 400;
+
+    private int offX = 0;
+
+    private int offY = 0;
 
 
-    public MapViewer(MapGrid grid, int mag, int offx, int offy)
+    public MapViewer(MapGrid grid)
     // allow the map viewer to take into account the magnification and offset points to produce a view
     {
         super();
         mapGrid = grid;
-        magnification = mag;
-        offSet = new Point(offx, offy);
+        magnification = 5;
+        offSet = new Point(offX, offY);
     }
 
     public int getMagnification()
@@ -70,6 +74,40 @@ public class MapViewer extends JComponent
     {
         return new Dimension (CANVAS_SIZE, CANVAS_SIZE);
     }
+    public void north() {
+        // move the map north one click
+        offSet = new Point(offX, offY-2);
+            repaint();
+    }
 
+    public void east() {
+        // move the map east one click
+        offSet = new Point(offX+2, offY);
+        repaint();
+    }
+
+    public void west() {
+        // move the map west one click
+        offSet = new Point(offX-2, offY);
+        repaint();
+    }
+
+    public void south() {
+        // move the map south one click
+        offSet = new Point (offX, offY+2);
+        repaint();
+    }
+
+    public void zoomOut() {
+        // zoom out on the map
+        magnification = magnification -2;
+        repaint();
+    }
+
+    public void zoomIn() {
+        // zoom in on the map
+        magnification = magnification +2;
+        repaint();
+    }
 
 }
