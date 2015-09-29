@@ -108,7 +108,6 @@ public class MapGUI extends JApplet
         panel.add(panel2,BorderLayout.CENTER);
 
         pane.add(panel, BorderLayout.EAST);
-        pane.setSize(10, 10);
     }
 
     /**

@@ -18,10 +18,13 @@ public class MapViewer extends JComponent
 
     public static final int CANVAS_SIZE = 400;
 
-    private int offX = 0;
+    private int x1 = 0;
 
-    private int offY = 0;
+    private int y1 = 0;
 
+    private int w1 = 0;
+
+    private int h1 = 0;
 
     public MapViewer(MapGrid grid)
     // allow the map viewer to take into account the magnification and offset points to produce a view
@@ -29,7 +32,7 @@ public class MapViewer extends JComponent
         super();
         mapGrid = grid;
         magnification = 5;
-        offSet = new Point(offX, offY);
+        offSet = new Point(0, 0);
     }
 
     public int getMagnification()
@@ -60,8 +63,9 @@ public class MapViewer extends JComponent
         {
             for (int y = offSet.y; y < mapGrid.getHeight(); y++)
             {
-                g.setColor(mapGrid.getSquare(x,y));
-                g.fillRect(x*magnification,y*magnification,magnification, magnification);
+                g.setColor(mapGrid.getSquare(x, y));
+                g.fillRect((x*magnification)+x1,(y*magnification)+y1,20+w1, 20+h1);
+                //g.fillRect(x*magnification,y*magnification,magnification, magnification);
             }
         }
     }
@@ -79,28 +83,40 @@ public class MapViewer extends JComponent
     public void north()
     {
         // move the map north one click
-        offSet = new Point(offX, offY-2);
-            repaint();
+        if (offSet.y -2 > 0)
+        {
+            setOffSet(new Point(offSet.x, offSet.y-2));
+        }
+        repaint();
     }
 
     public void east()
     {
         // move the map east one click
-        offSet = new Point(offX+2, offY);
+        if (x1 -2 > 0)
+        {
+            x1 = x1 -2;
+        }
         repaint();
     }
 
     public void west()
     {
         // move the map west one click
-        offSet = new Point(offX-2, offY);
+        if (x1 +2 < mapGrid.getWidth())
+        {
+            x1 = x1 +2;
+        }
         repaint();
     }
 
     public void south()
     {
         // move the map south one click
-        offSet = new Point (offX, offY+2);
+        if (offSet.y +2 < mapGrid.getHeight())
+        {
+            offSet = new Point(offSet.x, offSet.y + 2);
+        }
         repaint();
     }
 
