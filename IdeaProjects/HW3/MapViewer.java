@@ -22,10 +22,6 @@ public class MapViewer extends JComponent
 
     private int y1 = 0;
 
-    private int w1 = 0;
-
-    private int h1 = 0;
-
     public MapViewer(MapGrid grid)
     // allow the map viewer to take into account the magnification and offset points to produce a view
     {
@@ -59,13 +55,12 @@ public class MapViewer extends JComponent
     public void paintComponent(Graphics g)
     // creates the magnified view of a section of the map
     {
-        for (int x = offSet.x; x < mapGrid.getWidth(); x++)
+        for (int x = x1; x < mapGrid.getWidth(); x++)
         {
-            for (int y = offSet.y; y < mapGrid.getHeight(); y++)
+            for (int y = y1; y < mapGrid.getHeight(); y++)
             {
                 g.setColor(mapGrid.getSquare(x, y));
-                g.fillRect((x*magnification)+x1,(y*magnification)+y1,20+w1, 20+h1);
-                //g.fillRect(x*magnification,y*magnification,magnification, magnification);
+                g.fillRect((x-x1)*magnification, (y-y1)*magnification, 20, 20);
             }
         }
     }
@@ -82,55 +77,59 @@ public class MapViewer extends JComponent
 
     public void north()
     {
-        // move the map north one click
-        if (offSet.y -2 > 0)
+        // moves the map north one click
+        if (y1 -4 > 0)
         {
-            setOffSet(new Point(offSet.x, offSet.y-2));
-        }
-        repaint();
-    }
-
-    public void east()
-    {
-        // move the map east one click
-        if (x1 -2 > 0)
-        {
-            x1 = x1 -2;
+            y1 = y1-4;
         }
         repaint();
     }
 
     public void west()
     {
-        // move the map west one click
-        if (x1 +2 < mapGrid.getWidth())
+        // moves the map east one click
+        if (x1 -4 > 0)
         {
-            x1 = x1 +2;
+            x1 = x1 -4;
+        }
+        repaint();
+    }
+
+    public void east()
+    {
+        // moves the map west one click
+        if (x1 +4 < mapGrid.getWidth())
+        {
+            x1 = x1 +4;
         }
         repaint();
     }
 
     public void south()
     {
-        // move the map south one click
-        if (offSet.y +2 < mapGrid.getHeight())
+        // moves the map south one click
+        if (y1 +4 < mapGrid.getHeight())
         {
-            offSet = new Point(offSet.x, offSet.y + 2);
+            y1 = y1 +4;
         }
         repaint();
     }
 
     public void zoomOut()
     {
-        // zoom out on the map
+        // zooms out of the map
         magnification = magnification-2;
+        x1 = x1 - 4;
+        y1 = y1 - 4;
         repaint();
     }
 
     public void zoomIn()
     {
-        // zoom in on the map
+        // zooms in on the map
         magnification = magnification+2;
+        x1 = x1 + 4;
+        y1 = y1 + 4;
         repaint();
     }
 

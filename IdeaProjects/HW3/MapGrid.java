@@ -8,7 +8,7 @@ import java.awt.*;
 
 class MapGrid
 {
-    // create a 2d array fill it in with the color green
+    // creates a 2d array and fills it in with the color green
     Color[][] arr2d;
 
     MapGrid (int w, int h)

@@ -19,7 +19,7 @@ public class MapGUI extends JApplet
     {
         MapGrid mapG;
         // create all of the rectangles to display a map-like image
-        mapG = new MapGrid(50,50);
+        mapG = new MapGrid(200,200);
         mapG.modifyRectangleWithColor(new Rectangle(18,20,24,10), Color.BLACK);
         mapG.modifyRectangleWithColor(new Rectangle(21,20,5,1), Color.CYAN);
         mapG.modifyRectangleWithColor(new Rectangle(23,31,14,6), Color.BLUE);
@@ -50,7 +50,7 @@ public class MapGUI extends JApplet
 
         // Create and set up the window.
         JFrame frame = new JFrame("Map");
-        frame.setMinimumSize(new Dimension(8,2));
+        frame.setMinimumSize(new Dimension(8, 2));
         try
         {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -152,11 +152,11 @@ public class MapGUI extends JApplet
             }
         });
     }
-    /** Event handler for North button */
+    /** Event handler for South button */
     class SouthListener implements ActionListener
     {
         /**
-         *  Inverts the colors when the button is pushed.
+         *  Moves the view of the map south when the button is pushed.
          *
          *  @param e  Holds information about the button-push event
          */
@@ -169,7 +169,7 @@ public class MapGUI extends JApplet
     class NorthListener implements ActionListener
     {
         /**
-         *  Moves the map north when the button is pushed.
+         *  Moves the view of the map north when the button is pushed.
          *
          *  @param e  Holds information about the button-push event
          */
@@ -181,7 +181,7 @@ public class MapGUI extends JApplet
     class EastListener implements ActionListener
     {
         /**
-         *  Moves the map east when the button is pushed.
+         *  Moves the view of the map east when the button is pushed.
          *
          *  @param e  Holds information about the button-push event
          */
@@ -193,7 +193,7 @@ public class MapGUI extends JApplet
     class WestListener implements ActionListener
     {
         /**
-         *  Moves the map west when the button is pushed.
+         *  Moves the view of the map west when the button is pushed.
          *
          *  @param e  Holds information about the button-push event
          */
